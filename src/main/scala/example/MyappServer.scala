@@ -15,6 +15,7 @@ object MyappServer {
     for {
       client <- Stream.resource(EmberClientBuilder.default[F].build)
       helloWorldAlg = HelloWorld.impl[F]
+      accountAlg = Account.impl[F]
       jokeAlg = Jokes.impl[F](client)
 
       // Combine Service Routes into an HttpApp.
@@ -23,6 +24,7 @@ object MyappServer {
       // in the underlying routes.
       httpApp = (
         MyappRoutes.helloWorldRoutes[F](helloWorldAlg) <+>
+        MyappRoutes.accountRoute[F](accountAlg) <+>
         MyappRoutes.jokeRoutes[F](jokeAlg)
       ).orNotFound
 

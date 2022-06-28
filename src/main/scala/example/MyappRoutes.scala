@@ -25,8 +25,8 @@ object MyappRoutes {
     HttpRoutes.of[F] {
       case GET -> Root / "v3" / "account" / accountId =>
         for {
-          joke <- A.get
-          resp <- Ok(account)
+          greeting <- A.hello(Account.AccountId(accountId))
+          resp <- Ok(greeting)
         } yield resp
     }
   }
