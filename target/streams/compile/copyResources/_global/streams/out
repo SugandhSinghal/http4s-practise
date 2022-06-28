@@ -1,3 +1,0 @@
-[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/Users/sugandh.singhal/Desktop/Example/my-app/src/main/resources/logback.xml,/Users/sugandh.singhal/Desktop/Example/my-app/target/scala-2.13/classes/logback.xml)[0m
-[0m[[0m[0mdebug[0m] [0m[0m	(/Users/sugandh.singhal/Desktop/Example/my-app/src/main/resources/META-INF/native-image/example/reflect-config.json,/Users/sugandh.singhal/Desktop/Example/my-app/target/scala-2.13/classes/META-INF/native-image/example/reflect-config.json)[0m
