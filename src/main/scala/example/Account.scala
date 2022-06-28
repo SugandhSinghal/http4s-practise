@@ -6,7 +6,6 @@ import io.circe.{Encoder, Json}
 import org.http4s.EntityEncoder
 import org.http4s.circe._
 
-import java.util.UUID
 
 trait Account[F[_]]{
   def hello(n: Account.AccountId): F[Account.Greeting]

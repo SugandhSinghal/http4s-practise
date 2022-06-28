@@ -23,7 +23,7 @@ object MyappRoutes {
     val dsl = new Http4sDsl[F]{}
     import dsl._
     HttpRoutes.of[F] {
-      case GET -> Root / "v3" / "account" / accountId =>
+      case GET -> Root / "account" / accountId =>
         for {
           greeting <- A.hello(Account.AccountId(accountId))
           resp <- Ok(greeting)
