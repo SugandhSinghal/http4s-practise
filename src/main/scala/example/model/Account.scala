@@ -1,10 +1,17 @@
-package example
+package example.model
 
 import cats.Applicative
+import cats.data.NonEmptyList
 import cats.implicits._
-import io.circe.{Encoder, Json}
+import example.model.Types.Amount
+import example.model.Types.DateOfBirth.EmploymentStatus
+import io.circe.generic.semiauto.deriveCodec
+import io.circe.{Codec, Encoder, Json}
 import org.http4s.EntityEncoder
 import org.http4s.circe._
+
+import java.time.LocalDate
+import java.util.UUID
 
 
 trait Account[F[_]]{
@@ -35,4 +42,26 @@ object Account {
     def hello(n: Account.AccountId): F[Account.Greeting] =
       Greeting("Hello, " + n.accountId).pure[F]
   }
+}
+
+final case class AnnualSalary(amount: Amount)
+object AnnualSalary {
+  implicit val salaryCodec: Codec[AnnualSalary] = deriveCodec
+}
+
+final case class UserPersonalInfo(dateOfBirth: LocalDate, salary: AnnualSalary, employmentStatus: EmploymentStatus)
+object UserPersonalInfo {
+  implicit val userPersonalInfoCodec: Codec[UserPersonalInfo] = deriveCodec
+}
+
+final case class Account1(user: UserPersonalInfo)
+object Account1 {
+  implicit val accountCodec: Codec[Account1] = deriveCodec
+}
+
+final case class FullAccount(uuid: UUID, account: Account1) {
+}
+object FullAccount {
+  implicit final val codec: Codec[FullAccount] = deriveCodec
+
 }

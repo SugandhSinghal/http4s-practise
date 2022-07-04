@@ -2,6 +2,7 @@ package example
 
 import cats.effect.Sync
 import cats.implicits._
+import example.model.Account
 import org.http4s.HttpRoutes
 import org.http4s.dsl.Http4sDsl
 

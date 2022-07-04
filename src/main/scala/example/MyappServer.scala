@@ -3,6 +3,7 @@ package example
 import cats.effect.{Async, Resource}
 import cats.syntax.all._
 import com.comcast.ip4s._
+import example.model.Account
 import fs2.Stream
 import org.http4s.ember.client.EmberClientBuilder
 import org.http4s.ember.server.EmberServerBuilder
